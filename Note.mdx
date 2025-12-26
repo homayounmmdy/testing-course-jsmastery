@@ -79,16 +79,17 @@ a component
 - respond to user interactions
 - render visual elements
 
-## Integration Testing 
+## Integration Testing
 
-the integration test is like how organize of body are works together. your testing the 
-- connection 
-- the hand shakes 
-- the data flow between parts of applications 
+the integration test is like how organize of body are works together. your testing the
+
+- connection
+- the hand shakes
+- the data flow between parts of applications
 
 some time you test two connection like user with database sometimes is chain of connections
 
-## End to End Testing 
+## End to End Testing
 
 it's mot comprehensive and realistic but also the most complex and expensive
 when you run end to end you running real user journey for entire application using actual data.
@@ -98,82 +99,124 @@ It is same as real world. these test are slow because it's use :
 - real browser automation
 - network requests
 - database operation
-- external service call 
+- external service call
 
 ## Testing Knowledge
 
 it's about how much you know about the internal working of the system.
-it's not only help about what test to write it's also help to predicted how bugs 
+it's not only help about what test to write it's also help to predicted how bugs
 you could catch.
 
-## Black Box Testing 
+## Black Box Testing
 
-is about being customer using production without knowing about how it's made they only care that 
-it do what is suppose to do. it's only focus on input and output. like clicking add add to card that incess the 
+is about being customer using production without knowing about how it's made they only care that
+it do what is suppose to do. it's only focus on input and output. like clicking add add to card that incess the
 list of items.
 
-It is valuable for 
-- Long-term maintenance 
+It is valuable for
+
+- Long-term maintenance
 - Tracking the system
 
-when testing without understanding code you find 
-- Confusing error messages 
+when testing without understanding code you find
+
+- Confusing error messages
 - Unexpected behavior
 - Missing features
 
-but you can't test console error , or putting code in input and stuff like that 
+but you can't test console error , or putting code in input and stuff like that
 
-## White Box Testing 
+## White Box Testing
 
-now you have full Knowledge on 
+now you have full Knowledge on
 
 - Internal structure
-- Logic 
-- Implementation of code 
+- Logic
+- Implementation of code
 
-it's like engineer check that thing that they build. this test do 
-- Exercise specific code paths 
-- Test particular algorithms 
-- Verify that internal logic 
+it's like engineer check that thing that they build. this test do
+
+- Exercise specific code paths
+- Test particular algorithms
+- Verify that internal logic
 
 you check what happen if user do something wrong or checking the edge cases.
-because you know the logic you can write test that 
-- Hit every branch 
-- Test every condition 
+because you know the logic you can write test that
+
+- Hit every branch
+- Test every condition
 - Verify that each piece of code works as intended
 
-it's valuable for testing 
-- Algorithms 
+it's valuable for testing
+
+- Algorithms
 - Data structures
 - complex business logic
 
-the challenge is that can tidy with Implementation because you test 
+the challenge is that can tidy with Implementation because you test
 
-- Internal methods 
-- Private functions 
-- Specific code paths 
+- Internal methods
+- Private functions
+- Specific code paths
 
 by refactoring you might just break some places even the external behavior be the same
 
-it's mostly used for 
+it's mostly used for
 
-- Mathematical calculations 
+- Mathematical calculations
 - Data processing algorithms
-- Security functions  
-- Core business logic 
+- Security functions
+- Core business logic
 
-the things that often change 
+the things that often change
 
 ## Gray Box Testing
 
-when you have some Knowledge of internal and external. you know what tool do you use 
-but still do not mainly focus on logic you check by user perspective while check that work same 
-as expected. by this you can 
+when you have some Knowledge of internal and external. you know what tool do you use
+but still do not mainly focus on logic you check by user perspective while check that work same
+as expected. by this you can
 
 - Test the riskiest areas
 - Use realistic test data
-- Cover edge code paths 
+- Cover edge code paths
 
-## Testing by purpose 
+## Testing by purpose
 
 Testing by purpose refers to categorizing software testing based on its specific goal or intent, such as ensuring correctness, reliability, performance, or security. Examples include functional testing (to verify features work as specified), regression testing (to ensure new changes don’t break existing functionality), and usability testing (to evaluate user experience).
+
+## Functional Testing
+
+function do based on requirements e.g when user search for product dose product appear.
+also functional has multiply parts like
+
+### smoke testing
+
+like turn one car and make sure the engin is start the lights work and the basic system operational
+this are quick and high level tests that verify most basic functionality.
+The first test after deploying the code
+
+### sanity testing
+
+it's more focused like checking specific system work like air conditioning still work after you make
+some changes. sanity check the area you modify it's still do task correctly.
+this test help to **catch regressions**
+
+### regressions testing
+
+the most important part of the functional testing . this test check that the new code do not break the previous
+code accordantly. The challenge it become time consuming as the application growths.
+
+### User Acceptance Testing (UAT)
+
+the final validation before release this test not by
+
+- Developers
+- QA engineers
+- Product team
+
+it's show error and technical often forgot things like
+
+- COnfusing workflows
+- Missing features
+- Performance problems
+- Integration issues
