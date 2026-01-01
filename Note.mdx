@@ -415,41 +415,84 @@ it's great when your app sit between simple and complex
 - tailor it to your system
 - always remember have perfect shape
 
-## Choose the right strategy 
+## Choose the right strategy
 
-Here is the things that you have to in mind before choosing any testing strategy 
+Here is the things that you have to in mind before choosing any testing strategy
 
-### Application Architecture 
+### Application Architecture
 
 - for the data base system with complex logic go for testing pyramid
 - for modern application with react and have lot's of external API go for testing trophy
 
 Ask your self
 
-> Is most of your complexity in business logic -> Invest in Unite tests  
+> Is most of your complexity in business logic -> Invest in Unite tests
 
-> Is it in integration or UI behavior ? -> priorities Integration tests 
+> Is it in integration or UI behavior ? -> priorities Integration tests
 
 > Are there critical workflows that can't break ? -> focus End-to-End tests
 
-### Team and Organization 
+### Team and Organization
 
 even best strategy wouldn't stick if it doesn't fit your team or organization.
 
-match the strategies on how your team built and ship the software for software that deploy 
+match the strategies on how your team built and ship the software for software that deploy
 a lot focus on unite and integration for the teams that release not much go for end-to-end.
 
-### Risk and Business Context 
+### Risk and Business Context
 
-all bugs are not equal some break feature other beak entire business. In Finance a single mistake 
-cost money unite test matters most 
+all bugs are not equal some break feature other beak entire business. In Finance a single mistake
+cost money unite test matters most
 
 if you build social or content driven apps UX is matters so Integration and UI test take priority.
 
-think of it as risk and reward 
+think of it as risk and reward
 
-> If calculation errors would be catastrophic -> Unit tests 
+> If calculation errors would be catastrophic -> Unit tests
 
-> If integration points are fragile -> Integration tests 
+> If integration points are fragile -> Integration tests
 
-> If user workflows are critical -> End-to-end test 
+> If user workflows are critical -> End-to-end test
+
+## Building your testing strategy
+
+answer this questions to or building your own testing strategy based on answer
+
+### 1. Assess Your Current State
+
+- Which tests do you have right now ?
+- How long do they take to run ?
+- How often do they fail ?
+- What kinds of bugs do they actually catch , and which ones lip through ?
+
+### 2. Identify Your Constrains
+
+- How much time can we realistically dedicate to testing ?
+- How often do we deploy ?
+- What's our tolerance for bugs ?
+- What's our team's testing experience level ?
+
+### 3. Define Your Goals
+
+- Catch regressions before prod ? 
+- Improve code quality ?
+- Enable safe refactoring ? 
+- Support continuous deployment ? 
+
+### 4. Start Small and Iterate 
+
+don't aim for perfect testing setup on day one it dose not exit pick one area that matters the most 
+
+may it could be adding integration tests to critical APIs or few End-to-end for key user flows 
+
+> Testing maturity comes from Iteration not a single revolution
+
+### 5. Measure and Adjust 
+
+testing is not about set and forgot and you have to measure it.
+
+- Are our test catching bugs before users do  ? 
+- Is our feedback loop fast enough ? 
+- Do tests give us confidence to deploy anytime ? 
+
+if the answer NO adjust and evolve the strategy
