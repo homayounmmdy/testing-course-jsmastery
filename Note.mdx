@@ -414,3 +414,42 @@ it's great when your app sit between simple and complex
 - adopt it thoughtfully
 - tailor it to your system
 - always remember have perfect shape
+
+## Choose the right strategy 
+
+Here is the things that you have to in mind before choosing any testing strategy 
+
+### Application Architecture 
+
+- for the data base system with complex logic go for testing pyramid
+- for modern application with react and have lot's of external API go for testing trophy
+
+Ask your self
+
+> Is most of your complexity in business logic -> Invest in Unite tests  
+
+> Is it in integration or UI behavior ? -> priorities Integration tests 
+
+> Are there critical workflows that can't break ? -> focus End-to-End tests
+
+### Team and Organization 
+
+even best strategy wouldn't stick if it doesn't fit your team or organization.
+
+match the strategies on how your team built and ship the software for software that deploy 
+a lot focus on unite and integration for the teams that release not much go for end-to-end.
+
+### Risk and Business Context 
+
+all bugs are not equal some break feature other beak entire business. In Finance a single mistake 
+cost money unite test matters most 
+
+if you build social or content driven apps UX is matters so Integration and UI test take priority.
+
+think of it as risk and reward 
+
+> If calculation errors would be catastrophic -> Unit tests 
+
+> If integration points are fragile -> Integration tests 
+
+> If user workflows are critical -> End-to-end test 
