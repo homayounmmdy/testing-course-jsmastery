@@ -232,7 +232,7 @@ User not care it's works the user care more on :
 
 ### Performance Testing
 
-this bing and contain several categories: 
+this bing and contain several categories:
 
 #### Performance Testing: Load testing
 
@@ -241,16 +241,16 @@ by this you check that platform can work on multiply user use it.
 #### Performance Testing : Stress testing
 
 gradually ingress the system until it crash you find the limits and how system behave on extreme condition
-help to plan for traffic 
+help to plan for traffic
 
 #### Performance Testing Volume testing
 
-focus especially or large amount of data. how application works when database contain minions of data. The search remain 
-fast 
+focus especially or large amount of data. how application works when database contain minions of data. The search remain
+fast
 
-### Security Testing 
+### Security Testing
 
-this test include to checking 
+this test include to checking
 
 - Auth systems
 - Validating input handling
@@ -262,117 +262,155 @@ this test include to checking
 it's check how easy and pleasant you application is to use this include testing:
 
 - Navigation & info architecture
-- Evaluating form design 
-- Error handling 
-- Checking accessibility 
-- Verify that the app works 
+- Evaluating form design
+- Error handling
+- Checking accessibility
+- Verify that the app works
 
 ### Compatibility Testing
 
 It's make sure the application is working correctly across different enticements.
 
-## Testing by Execution 
+## Testing by Execution
 
-it's about How and When the test actually run. are you run manually when you fill like it or 
+it's about How and When the test actually run. are you run manually when you fill like it or
 you have Automated system the run every step of the system
 
-### Manual Testing 
+### Manual Testing
 
-It's like Monkey see Monkey do. Sometimes need human things like bad UI can't catch by 
+It's like Monkey see Monkey do. Sometimes need human things like bad UI can't catch by
 test it can get by user. it's like exploration also it's often called **Exploratory Testing**.
 
-### Usability Testing 
+### Usability Testing
 
-Instead of you testing app somebody else test and you watch along side of them. by this you 
+Instead of you testing app somebody else test and you watch along side of them. by this you
 
-- Noticing where people hesitate 
+- Noticing where people hesitate
 - What confuses them
-- How they completely ignore 
+- How they completely ignore
 
-The cons are 
-- Manual testing takes time 
-- Doesn't scale well 
-- People miss things 
+The cons are
 
-you have balance between automate and manual 
+- Manual testing takes time
+- Doesn't scale well
+- People miss things
 
-## Automated Testing 
+you have balance between automate and manual
 
-this when you handed the software tools that run test for you. the best part this 
+## Automated Testing
 
-- Speed 
+this when you handed the software tools that run test for you. the best part this
+
+- Speed
 - Consistency
-- Scales like crazy 
+- Scales like crazy
 
-it's like saver for regression testing 
+it's like saver for regression testing
 
-## Testing Strategies 
+## Testing Strategies
 
-the problems is you don't know 
-- What to test 
-- How much to test 
+the problems is you don't know
+
+- What to test
+- How much to test
 - When to test
 
-the problem is that you sometimes do not test some cases you over test some places and 
-worse is get falsy truthy which is green while is not testing the right thing this 
+the problem is that you sometimes do not test some cases you over test some places and
+worse is get falsy truthy which is green while is not testing the right thing this
 are pattern that helps that stop these.
 
-- Testing Trophy 
+- Testing Trophy
 - Honeycomb Strategy
-- Ice Cream Cone Anti-Pattern 
-- Testing Diamond 
+- Ice Cream Cone Anti-Pattern
+- Testing Diamond
 - Testing Pyramid
 
-## Testing Pyramid 
+## Testing Pyramid
 
-> Different types of tests have vastly different costs and benefits 
+> Different types of tests have vastly different costs and benefits
 
 [testing pyramid]('./images/testing_pyramid.png');
 
-during developments you make some changes like : 
+during developments you make some changes like :
 
-- Refactor code 
-- Add feature 
-- Fix bug 
+- Refactor code
+- Add feature
+- Fix bug
 - Update dependencies
 
-It's for apps like 
-- Finance 
-- Science 
+It's for apps like
+
+- Finance
+- Science
 - Complex algorithms
 
 ## Ice Cream Cone Anti-Pattern
 
 [Ice Cream Cone Anti-Pattern]('./images/ice_cream_pattern.png');
 
-This is the opposite  of testing pyramid 
-also have some negative things like : 
+This is the opposite of testing pyramid
+also have some negative things like :
 
 - Feedback becomes painfully slow
-- Debugging becomes a nightmare 
+- Debugging becomes a nightmare
 - Maintenance get out of hand
 
-## Testing Trophy 
+## Testing Trophy
 
 [Ice Cream Cone Anti-Pattern]('./images/testing_trophy.png');
 
-
 This is looks familiar to pyramid but with some difference
 
-## Honeycomb Strategy 
+## Honeycomb Strategy
 
 [Honeycomb Strategy]('./images/honeycomb_strategy.png');
 
 build separate testing strategy for each part of application.
 
-here is the example 
+here is the example
 
 [Honeycomb example]('./images/honeycomb_example.png');
 
 > Core idea : test where i matters most
 
-the problems are 
+the problems are
 
-- Service contracts 
-- Integration environments 
-- Data dependencies 
+- Service contracts
+- Integration environments
+- Data dependencies
+
+## Diamond Testing
+
+[testing diamond]('./images/testing_diamond.png');
+
+the result of using this testing strategy is
+
+- Comprehensive
+- Practical
+
+it't good when the project have
+
+- some complex business logic
+- some user interaction complexity
+
+things like
+
+- e-commerce
+- sass dashboard
+- CMS
+- Finance
+- health care
+
+this systems are need
+
+- slid logic validation
+- strong integration checks
+- few full end-to-end workflows
+
+it's great when your app sit between simple and complex
+
+> like any other testing strategy it's guide , not rule
+
+- adopt it thoughtfully
+- tailor it to your system
+- always remember have perfect shape
