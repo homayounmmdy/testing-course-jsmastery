@@ -572,3 +572,50 @@ it's about testing user behavior not the Implementation details
 
 for browser the mostly use JSDOM that simulate separate place for testing.
 
+## Backend Testing 
+the is about 
+
+- APIs handle data
+- Implement business rules 
+- Manage security 
+- Handle complex operation
+
+you need tools to 
+
+- Make HTTP requests 
+- Validate responses
+- Mock external services 
+- Verify server-side code 
+
+the most important are 
+
+### 1: API Tools 
+
+if use nodejs Supertest is good fit for it. by this you can test 
+- Routes 
+- Middleware 
+- Response handling
+
+for things that full feature Axios better and it is run everywhere 
+for simpler and lighter you can use NodeFetch where it's shorter but give 
+less functionality and it is work same as fetch in javascript  
+
+### 2: Database tools 
+
+we have in memory that store the data in the RAM it is come on RAM and when the 
+test finished it will vanished 
+
+the benefits are 
+
+- You get Speed 
+- Your database is isolated 
+- You have Simplicity 
+- You save Resources 
+
+for exact real scenarios you can use docker testing the benefits of these are 
+
+- Database-Specific Features 
+- Production Parity 
+- Integration Testing 
+- CI/CD Reliability 
+- Complex dependencies
