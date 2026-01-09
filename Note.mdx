@@ -671,3 +671,65 @@ structure they all good.
 For other types of testing you just expand your testing you can't write technically
 E2E with jest but it's not build for that by doing this you invent the wheel all the time
 you have use external tools or sometimes build your own 
+
+## Introduction to Unite testing
+
+It's testing each piece separate in different environments and it's fast and focused.
+Every unite test follow Arrange-Act-Assert it's provide clarity and Consistency make it easier to 
+- read 
+- write 
+- maintained
+
+### Arrange 
+
+Set up everything for the test it's include 
+- input data for the function 
+- many mock objects 
+- initial state that your code relay on 
+
+like this example blew 
+
+```javascript
+const userData = {name : "John Doe", email : "john@example.com",age : 25}
+const mockNotificationServer = {sendEmail: jest.fn()}
+const userValidator = new userValidator();
+
+```
+
+### Act 
+
+- perform the specific action that being tested usually single line of code 
+
+```javascript
+const validationResult = userValidator.validateUser(userData)
+```
+
+### Assert 
+
+verify that the behavior do the expected result 
+
+```javascript
+expect(validationResult.isValid).toBe(true);
+expect(validationResult.errors).toHaveLength(0);
+expect(mockNotificationServer.sendEmail).toHaveBeenCalledWith(userData.email);
+```
+
+here is the full example 
+
+```javascript
+// Arrange
+const userData = {name : "John Doe", email : "john@example.com",age : 25}
+const mockNotificationServer = {sendEmail: jest.fn()}
+const userValidator = new userValidator();
+
+
+// Act 
+const validationResult = userValidator.validateUser(userData)
+
+
+// Assert
+expect(validationResult.isValid).toBe(true);
+expect(validationResult.errors).toHaveLength(0);
+expect(mockNotificationServer.sendEmail).toHaveBeenCalledWith(userData.email);
+```
+
