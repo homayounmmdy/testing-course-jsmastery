@@ -659,3 +659,15 @@ debugging is nightmare because it's rely on old webDriver.
 
 For new project good to use Playwright but if you consider DX and debugging tools go
 for Cypress but be aware for it browser limitation
+
+## Common Misunderstanding
+
+If jest , vitest if for unite can we use if for integration or e2e ?
+
+They are test runner their job is find test run test and show result. they 
+don't care what test you write  as long as it's javascript and follow the right 
+structure they all good.
+
+For other types of testing you just expand your testing you can't write technically
+E2E with jest but it's not build for that by doing this you invent the wheel all the time
+you have use external tools or sometimes build your own 
