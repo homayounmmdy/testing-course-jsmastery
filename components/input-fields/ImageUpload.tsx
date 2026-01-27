@@ -56,6 +56,7 @@ export const ImageUpload: FC<ImageUploadProps> = ({ handleChange }) => {
     <div>
       <Label htmlFor="profileImage" label="Profile Picture" />
       <div
+          data-testid='drop-zone'
         className={`mt-2 flex items-center justify-center w-full h-32 border-2 border-gray-600 border-dashed rounded-lg cursor-pointer transition-colors ${
           isDragging
             ? "bg-gray-600 border-cyan-500"
@@ -83,10 +84,11 @@ export const ImageUpload: FC<ImageUploadProps> = ({ handleChange }) => {
             className="hidden"
             accept="image/*"
             onChange={handleChange}
+            data-testid='file-upload'
           />
         </label>
       </div>
-      {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
+      {error && <p data-testid='error-message' className="mt-2 text-sm text-red-500">{error}</p>}
     </div>
   );
 };
