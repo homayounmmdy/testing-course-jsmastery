@@ -73,6 +73,37 @@ describe("AuthForm Component", () => {
         expect(onSubmit).not.toHaveBeenCalled();
       });
     });
+
+    describe("Submission", () => {
+      it("should call onSubmit with valid data and proper loading state", async () => {
+        const onSubmit = jest
+          .fn()
+          .mockImplementation(() => new Promise((resolve) => setTimeout(() => resolve({ success: true }), 100)));
+
+        render(
+          <AuthForm
+            schema={SignInSchema}
+            defaultValues={{ email: "", password: "" }}
+            onSubmit={onSubmit}
+            formType="SIGN_IN"
+          />
+        );
+
+        const emailInput = screen.getByLabelText("Email Address");
+        const passwordInput = screen.getByLabelText("Password");
+        const submitButton = screen.getByRole("button", { name: "Sign In" });
+
+        await user.type(emailInput, "test@valid.com");
+        await user.type(passwordInput, "123123123");
+        await user.click(submitButton);
+
+        expect(screen.getByText("Signing In...")).toBeInTheDocument();
+        expect(onSubmit).toHaveBeenCalledWith({
+          email: "test@valid.com",
+          password: "123123123",
+        });
+      });
+    });
   });
 
   describe("Sign Out Form", () => {
