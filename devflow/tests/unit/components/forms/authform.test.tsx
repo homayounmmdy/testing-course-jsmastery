@@ -2,10 +2,15 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import AuthForm from "@/components/forms/AuthForm";
 import { SignInSchema, SignUpSchema } from "@/lib/validations";
+import { resetAllMocks } from "@/tests/mocks";
 
 const user = userEvent.setup();
 
 describe("AuthForm Component", () => {
+  beforeEach(() => {
+    resetAllMocks();
+  });
+
   describe("Sign In Form", () => {
     describe("Rendering", () => {
       it("should display all required fields", () => {
@@ -104,6 +109,8 @@ describe("AuthForm Component", () => {
         });
       });
     });
+
+    describe("Success Handling", () => {});
   });
 
   describe("Sign Out Form", () => {
