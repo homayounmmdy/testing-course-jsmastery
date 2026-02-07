@@ -16,7 +16,7 @@ const MockEditor = jest.fn(({ value, editorRef, fieldChange, ...props }) => {
   return (
     <textarea
       id="mdx-editor"
-      data-testid="mock-editor"
+      data-testid="mdx-editor"
       defaultValue={value}
       onChange={fieldChange}
       placeholder="MDXEditor Mock"
