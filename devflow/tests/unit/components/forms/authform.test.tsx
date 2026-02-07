@@ -2,7 +2,8 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import AuthForm from "@/components/forms/AuthForm";
 import { SignInSchema, SignUpSchema } from "@/lib/validations";
-import { resetAllMocks } from "@/tests/mocks";
+import {mockRouter, mockToast, resetAllMocks} from "@/tests/mocks";
+import ROUTES from "@/constants/routes";
 
 const user = userEvent.setup();
 
@@ -110,7 +111,31 @@ describe("AuthForm Component", () => {
       });
     });
 
-    describe("Success Handling", () => {});
+    describe("Success Handling", () => {
+      it("should show success toast and redirect to home", async () => {
+        const onSubmit = jest.fn().mockResolvedValue({ success: true });
+
+        render(
+          <AuthForm
+            schema={SignInSchema}
+            defaultValues={{ email: "", password: "" }}
+            onSubmit={onSubmit}
+            formType="SIGN_IN"
+          />
+        );
+
+        const emailInput = screen.getByLabelText("Email Address");
+        const passwordInput = screen.getByLabelText("Password");
+        const submitButton = screen.getByRole("button", { name: "Sign In" });
+
+        await user.type(emailInput, "test@valid.com");
+        await user.type(passwordInput, "123123123");
+        await user.click(submitButton);
+
+        expect(mockToast).toHaveBeenCalledWith({ title: "Success", description: "You have successfully signed in." });
+        expect(mockRouter.replace).toHaveBeenCalledWith(ROUTES.HOME);
+      });
+    });
   });
 
   describe("Sign Out Form", () => {
