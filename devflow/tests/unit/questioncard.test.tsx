@@ -53,5 +53,18 @@ describe("QuestionCard Component", () => {
       expect(screen.getByText("5 Answers")).toBeInTheDocument();
       expect(screen.getByText("100 Views")).toBeInTheDocument();
     });
+
+    describe("Responsive Behaviour", () => {
+      it("should hide timestamp on small screens", () => {
+        Object.defineProperty(window, "innerWidth", { writable: true, configurable: true, value: 500 });
+
+        window.dispatchEvent(new Event("resize"));
+
+        render(<QuestionCard question={mockQuestion} />);
+
+        const timestamp = screen.getByText(relativeTimeText, { selector: "span" });
+        expect(timestamp).toHaveClass("sm:hidden");
+      });
+    });
   });
 });
