@@ -17,7 +17,7 @@ const mockHandlers = {
   POST: jest.fn(),
 };
 
-const mockUserSession = jest.fn(() => ({
+const mockUseSession = jest.fn(() => ({
   data: mockSession,
   status: "authenticated",
   update: jest.fn(),
@@ -41,7 +41,7 @@ export {
   mockGitHub,
   mockCredentials,
   mockGoogle,
-  mockUserSession,
+  mockUseSession,
   mockGetSession,
   mockGetServerSession,
   mockSignInReact,
