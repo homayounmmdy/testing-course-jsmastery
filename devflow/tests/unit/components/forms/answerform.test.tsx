@@ -49,4 +49,56 @@ describe("AnswerForm Component", () => {
       );
     });
   });
+
+  describe("Submission", () => {
+    it("should submit form successfully with valid data", async () => {
+      mockCreateAnswer.mockResolvedValue({ success: true });
+
+      render(<AnswerForm questionId="123" questionTitle="Test Question" questionContent="Test Content" />);
+
+      await user.type(await screen.findByTestId("mdx-editor"), "This is my answer to the question".repeat(5));
+
+      await user.click(screen.getByRole("button", { name: /post answer/i }));
+
+      expect(mockCreateAnswer).toHaveBeenCalledWith({
+        content: "This is my answer to the question".repeat(5),
+        questionId: "123",
+      });
+      expect(mockToast).toHaveBeenCalledWith(
+        expect.objectContaining({
+          title: "Success",
+          description: "Your answer has been created successfully.",
+        })
+      );
+    });
+
+    it("should disable submit button when form is submitting", async () => {
+      mockUseSession.mockReturnValue({
+        data: mockSession,
+        status: "authenticated",
+        update: jest.fn(),
+      });
+
+      mockCreateAnswer.mockImplementation(() => new Promise(() => {}));
+      mockApiAiAnswer.mockImplementation(() => new Promise(() => {}));
+
+      render(<AnswerForm questionId="123" questionTitle="Test Question" questionContent="Test Content" />);
+
+      await user.type(await screen.findByTestId("mdx-editor"), "This is my answer to the question".repeat(5));
+
+      const generateBtn = await screen.findByRole("button", { name: /generate ai answer/i });
+      await user.click(generateBtn);
+
+      const submitBtn = screen.getByRole("button", { name: /post answer/i });
+      await user.click(submitBtn);
+
+      await waitFor(() => {
+        expect(submitBtn).toBeDisabled();
+        expect(screen.getByText(/posting/i)).toBeInTheDocument();
+
+        expect(generateBtn).toBeDisabled();
+        expect(screen.getByText(/generating/i)).toBeInTheDocument();
+      });
+    });
+  });
 });
