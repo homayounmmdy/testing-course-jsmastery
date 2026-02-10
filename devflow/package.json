@@ -34,6 +34,7 @@
     "cm6-theme-basic-dark": "^0.2.0",
     "dayjs": "^1.11.18",
     "lucide-react": "^0.545.0",
+    "mongodb-memory-server": "^11.0.1",
     "mongoose": "^8.19.1",
     "next": "15.5.7",
     "next-auth": "^5.0.0-beta.25",
