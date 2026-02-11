@@ -17,6 +17,10 @@ afterAll(async () => {
   await disconnectDB();
 });
 
+afterEach(async () => {
+  await clearDB();
+});
+
 process.on("SIGINT", async () => {
   await disconnectDB();
   process.exit(0);
