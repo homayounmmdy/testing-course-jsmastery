@@ -6,18 +6,18 @@ let isConnected = false;
 
 export async function connectDB(): Promise<void> {
   if (isConnected) return;
-  mongoServer = await MongoMemoryServer.create();
-  const uri = MongoMemoryServer.getUri();
-
-  await mongoose.connect(uri, { dbName: "testingDB" });
-
-  if (global.mongoose) {
-    global.mongoose.conn = mongoose;
-    global.mongoose.promise = Promise.resolve(mongoose);
-  }
-
-  isConnected = true;
   try {
+    mongoServer = await MongoMemoryServer.create();
+    const uri = mongoServer.getUri();
+
+    await mongoose.connect(uri, { dbName: "testingDB" });
+
+    if (global.mongoose) {
+      global.mongoose.conn = mongoose;
+      global.mongoose.promise = Promise.resolve(mongoose);
+    }
+
+    isConnected = true;
   } catch (e) {
     console.error("Failed to connect to integration DB: ", e);
     throw e;
