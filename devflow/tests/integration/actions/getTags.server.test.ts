@@ -30,10 +30,7 @@ describe("getTags action", () => {
         });
 
         it("should return the first page of tags sorted by questions count (default behavior)", async () => {
-            const {
-                success ,
-                data
-            } = await getTags({page: 1, pageSize: 2});
+            const {success, data} = await getTags({page: 1, pageSize: 2});
 
             expect(success).toBe(true);
             expect(data?.tags).toHaveLength(2);
@@ -43,12 +40,43 @@ describe("getTags action", () => {
         });
 
         it("should return the second page of tags when paginated", async () => {
-            const {success , data} = await getTags({page: 2, pageSize: 2});
+            const {success, data} = await getTags({page: 2, pageSize: 2});
 
             expect(success).toBe(true);
             expect(data?.tags).toHaveLength(1);
             expect(data?.tags[0].name).toBe('react');
             expect(data?.isNext).toBe(false);
+        })
+    });
+
+    describe("Search Functionality", () => {
+        beforeEach(async () => {
+            const testTags = [
+                {name: 'javascript', questions: 100, createAt: '2026-01-1'},
+                {name: 'java', questions: 50, createAt: '2026-02-1'},
+                {name: 'node', questions: 200, createAt: '2026-03-1'},
+            ];
+
+            await Tag.insertMany(testTags);
+        });
+
+        afterEach(async () => {
+            Tag.deleteMany({});
+        });
+
+        it("should filter tags by partial name match (case insensitive)", async () => {
+            const {success , data} = await getTags({page: 1, pageSize: 10, query: "jav"});
+
+            expect(success).toBe(true);
+            expect(data?.tags).toHaveLength(2);
+            expect(data?.tags.map((tag) => tag.name)).toEqual(expect.arrayContaining(["javascript", "java"]));
+        });
+
+        it("should return an empty array when no tags match the query", async () => {
+            const {success , data} = await getTags({page: 1, pageSize: 10, query: "nonexistent"});
+
+            expect(success).toBe(true);
+            expect(data?.tags).toHaveLength(0);
         })
     })
 });
