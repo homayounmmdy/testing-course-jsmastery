@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 let mongoServer: MongoMemoryServer;
 let isConnected = false;
 
-export async function connectToDB(): Promise<void> {
+export async function connectDB(): Promise<void> {
   if (isConnected) return;
   mongoServer = await MongoMemoryServer.create();
   const uri = MongoMemoryServer.getUri();
@@ -24,7 +24,7 @@ export async function connectToDB(): Promise<void> {
   }
 }
 
-export async function disconnectToDB(): Promise<void> {
+export async function disconnectDB(): Promise<void> {
   if (!isConnected) return;
 
   try {
