@@ -17,7 +17,7 @@ const eslintConfig = [
       "prettier/prettier": [
         "error",
         {
-          trailingComma: "es5",
+          trailingComma: "es6",
           semi: true,
           tabWidth: 2,
           printWidth: 120,

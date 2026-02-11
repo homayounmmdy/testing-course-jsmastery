@@ -1,6 +1,10 @@
 import "@testing-library/react";
 import { connectDB, clearDB, disconnectDB, isDBConnected } from "./tests/config/db-integration";
 
+jest.mock("@/auth", () => ({
+  auth : jest.fn(() => Promise.resolve({user : null})),
+}))
+
 beforeAll(async () => {
   await connectDB();
 }, 30000);
